@@ -6,14 +6,17 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
 
+variables:
+  azureSubscriptionEndpoint: 'Azure subscription 1'
+  azureContainerRegistry: 'ubearcat'
+  azureResourceGroup: 'Test'
+  kubernetesCluster: 'ubearcat'
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: HelmDeploy@0
+  displayName: Helm deploy
+  inputs:
+    connectionType: Azure Resource Manager
+    azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+    azureResourceGroup: $(azureResourceGroup)
+    kubernetesCluster: $(kubernetesCluster)
