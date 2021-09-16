@@ -20,5 +20,5 @@ steps:
     azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
     azureResourceGroup: $(azureResourceGroup)
     kubernetesCluster: $(kubernetesCluster)
-    connectionType: Kubernetes Service Connection
-    kubernetesServiceEndpoint: ubearcat-svc-aks
+    command: ls
+  arguments: -all
