@@ -21,4 +21,4 @@ steps:
     azureResourceGroup: $(azureResourceGroup)
     kubernetesCluster: $(kubernetesCluster)
     command: ls
-  arguments: -all
+    arguments: -all
