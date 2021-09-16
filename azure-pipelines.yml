@@ -12,6 +12,8 @@ variables:
   azureContainerRegistry: 'ubearcat'
   azureResourceGroup: 'Test'
   kubernetesCluster: 'ubearcat'
+  AIRFLOW_NAME: 'airflow-cluster'
+  AIRFLOW_NAMESPACE: 'test'
 steps:
 - task: HelmDeploy@0
   displayName: Helm deploy
@@ -31,3 +33,13 @@ steps:
     kubernetesCluster: $(kubernetesCluster)
     command: repo
     arguments: update
+
+- task: HelmDeploy@0
+  displayName: Helm install 
+  inputs:
+    connectionType: Azure Resource Manager
+    azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+    azureResourceGroup: $(azureResourceGroup)
+    kubernetesCluster: $(kubernetesCluster)
+    command: install
+    arguments: $(AIRFLOW_NAME) airflow-stable/airflow --namespace $(AIRFLOW_NAMESPACE) --version "8.X.X" --values ./custom-values.yml
