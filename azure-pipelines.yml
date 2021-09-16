@@ -42,4 +42,5 @@ steps:
     azureResourceGroup: $(azureResourceGroup)
     kubernetesCluster: $(kubernetesCluster)
     command: install
+    chartName: airflow-stable
     arguments: $(AIRFLOW_NAME) airflow-stable/airflow --namespace $(AIRFLOW_NAMESPACE) --version "8.X.X" --values ./custom-values.yml
