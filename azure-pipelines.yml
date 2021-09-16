@@ -20,5 +20,14 @@ steps:
     azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
     azureResourceGroup: $(azureResourceGroup)
     kubernetesCluster: $(kubernetesCluster)
-    command: ls
-    arguments: -all
+    command: repo
+    arguments: add airflow-stable https://airflow-helm.github.io/charts
+- task: HelmDeploy@0
+  displayName: Helm Add Repo
+  inputs:
+    connectionType: Azure Resource Manager
+    azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+    azureResourceGroup: $(azureResourceGroup)
+    kubernetesCluster: $(kubernetesCluster)
+    command: repo
+    arguments: update
