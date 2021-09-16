@@ -8,7 +8,7 @@ trigger:
 
 
 variables:
-  azureSubscriptionEndpoint: 'ubearcat-svc-aks'
+  azureSubscriptionEndpoint: 'ubearcat-rm-svc'
   azureContainerRegistry: 'ubearcat'
   azureResourceGroup: 'Test'
   kubernetesCluster: 'ubearcat'
